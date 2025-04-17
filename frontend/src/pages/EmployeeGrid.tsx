@@ -45,7 +45,7 @@ const EmployeeGrid: React.FC = () => {
   const [filterText, setFilterText] = useState("")
   const [deleteEmployeeId, setDeleteEmployeeId] = useState<string | null>(null)
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false)
-  const [employeeDialogOpen, setEmployeeDialogOpen] = useState(false) // Combined dialog
+  const [employeeDialogOpen, setEmployeeDialogOpen] = useState(false)
   const [selectedEmployeeId, setSelectedEmployeeId] = useState<string | null>(
     null,
   )
@@ -55,7 +55,7 @@ const EmployeeGrid: React.FC = () => {
 
   const fetchEmployees = async () => {
     try {
-      const data = await employeeService.getEmployees({}) // Fetch all employees (adjust params as needed)
+      const data = await employeeService.getEmployees({})
       setEmployees(data.docs)
       setTotalEmployees(data.docs.length);
       setPage(0);

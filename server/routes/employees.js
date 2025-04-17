@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const Employee = require("../models/Employee"); // Import the Employee model
-const authMiddleware = require("../middleware/authMiddleware"); // Import authMiddleware
-const roleMiddleware = require("../middleware/roleMiddleware"); // Import roleMiddleware
+const Employee = require("../models/Employee"); 
+const authMiddleware = require("../middleware/authMiddleware"); 
+const roleMiddleware = require("../middleware/roleMiddleware");
 
-// GET all employees (with pagination, search, and filter)
 router.get("/", authMiddleware, async (req, res) => {
   try {
     const {
@@ -19,7 +18,7 @@ router.get("/", authMiddleware, async (req, res) => {
     const filter = {};
     if (search) {
       filter.$or = [
-        { name: { $regex: search, $options: "i" } }, // 'i' for case-insensitive
+        { name: { $regex: search, $options: "i" } },
         { department: { $regex: search, $options: "i" } },
         { role: { $regex: search, $options: "i" } },
         { location: { $regex: search, $options: "i" } },
@@ -43,7 +42,6 @@ router.get("/", authMiddleware, async (req, res) => {
   }
 });
 
-// GET a single employee by ID
 router.get("/:id", authMiddleware, async (req, res) => {
   try {
     const employee = await Employee.findById(req.params.id);
@@ -57,7 +55,6 @@ router.get("/:id", authMiddleware, async (req, res) => {
   }
 });
 
-// CREATE a new employee (Admin only)
 router.post(
   "/",
   authMiddleware,
@@ -76,7 +73,6 @@ router.post(
   }
 );
 
-// UPDATE an employee by ID (Admin only)
 router.put(
   "/:id",
   authMiddleware,
@@ -87,8 +83,8 @@ router.put(
         req.params.id,
         req.body,
         {
-          new: true, // Return the updated document
-          runValidators: true, // Validate the update
+          new: true, 
+          runValidators: true,
         }
       );
       if (!employee) {
@@ -102,7 +98,6 @@ router.put(
   }
 );
 
-// DELETE an employee by ID (Admin only)
 router.delete(
   "/:id",
   authMiddleware,

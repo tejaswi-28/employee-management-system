@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const customAxios = axios.create({
- baseURL: 'http://localhost:3000/api/', // Adjust if your API is on a different URL
+ baseURL: 'http://localhost:3000/api/',
 });
 
 customAxios.interceptors.request.use(

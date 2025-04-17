@@ -40,8 +40,6 @@ const AdminPanel: React.FC = () => {
     const fetchUsers = async () => {
         try {
             const data = await userService.getUsers({});
-            console.log("fetchUsers - Response:", data); // ADD THIS LINE
-            console.log("fetchUsers - Type of Response:", typeof data); // AND THIS LINE
             setUsers(data);
         } catch (error) {
             console.error("Error fetching users:", error);
@@ -105,7 +103,6 @@ const AdminPanel: React.FC = () => {
                     </Table>
                 </TableContainer>
 
-                {/* Edit User Role Dialog */}
                 <Dialog open={editUserDialog} onClose={() => setEditUserDialog(false)}>
                     <DialogTitle>Edit User Role</DialogTitle>
                     <DialogContent>
@@ -120,7 +117,6 @@ const AdminPanel: React.FC = () => {
                             >
                                 <MenuItem value="Admin">Admin</MenuItem>
                                 <MenuItem value="Power User">Power User</MenuItem>
-                                {/* Add other roles as needed */}
                             </Select>
                         </FormControl>
                     </DialogContent>

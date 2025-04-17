@@ -12,7 +12,7 @@ const EmployeeSchema = new mongoose.Schema({
 
 EmployeeSchema.pre('save', function (next) {
   if (!this.emp_id) {
-    this.emp_id = `E${uuidv4().substring(0, 8).toUpperCase()}`; // Generate a UUID-based emp_id
+    this.emp_id = `E${uuidv4().substring(0, 8).toUpperCase()}`;
   }
   next();
 });

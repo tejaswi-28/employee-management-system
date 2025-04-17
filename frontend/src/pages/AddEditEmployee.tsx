@@ -1,4 +1,3 @@
-// client/src/components/AddEmployee.tsx
 import React, { useEffect, useState } from "react"
 import {
   TextField,
@@ -16,7 +15,7 @@ interface AddEmployeeProps {
   open: boolean
   onClose: () => void
   employeeId: string | null
-  onEmployeeSaved: (employee: Employee) => void // Callback to update parent
+  onEmployeeSaved: (employee: Employee) => void
 }
 
 const AddEditEmployee: React.FC<AddEmployeeProps> = ({
@@ -51,7 +50,6 @@ const AddEditEmployee: React.FC<AddEmployeeProps> = ({
         console.log("Employee data", employee)
       } catch (error) {
         console.error("Error fetching employee details:", error)
-        // Handle error
       }
     } else {
       setIsEditMode(false)
@@ -80,7 +78,6 @@ const AddEditEmployee: React.FC<AddEmployeeProps> = ({
       onClose()
     } catch (error) {
       console.error("Error saving employee:", error)
-      // Handle error
     }
   }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Button, useTheme } from "@mui/material";
-import { Link } from "react-router-dom"; //  If using React Router
+import { Link } from "react-router-dom";
 
 const NotFound: React.FC = () => {
     const theme = useTheme();

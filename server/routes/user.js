@@ -5,12 +5,11 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 router.get("/", authMiddleware, async (req, res) => {
   try {
-    //  Check if the user is an Admin
     if (req.user.role !== "Admin") {
       return res.status(403).json({ message: "Unauthorized" });
     }
 
-    const users = await User.find().select("-password"); // Exclude passwords for security
+    const users = await User.find().select("-password");
     res.json(users);
   } catch (error) {
     console.error(error);
@@ -24,7 +23,7 @@ router.put("/:id", authMiddleware, async (req, res) => {
   console.log("PUT /api/users/:id - ID:", req.params.id);
   console.log("PUT /api/users/:id - req.user:", req.user);
   console.log("PUT /api/users/:id - req.body:", req.body);
-  
+
   try {
     if (req.user.role !== "Admin") {
       return res.status(403).json({ message: "Unauthorized" });

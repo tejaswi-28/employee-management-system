@@ -13,8 +13,8 @@ import {
   DashboardLayout,
   SidebarFooterProps,
 } from "@toolpad/core/DashboardLayout"
-import { useNavigate } from "react-router" // Import useNavigate
-import { Box, Button, Divider, Stack, Typography} from "@mui/material" // Import Button
+import { useNavigate } from "react-router"
+import { Box, Button, Divider, Stack, Typography} from "@mui/material"
 import { useAuth } from "../context/AuthContext"
 import DashboardPage from "./DashBoardPage"
 import EmployeeGrid from "../pages/EmployeeGrid"
@@ -76,10 +76,9 @@ export default function DashboardLayoutBasic(props: any) {
   const { window } = props
   const router = useDemoRouter("/dashboard")
 
-  // Remove this const when copying and pasting into your project.
   const demoWindow = window ? window() : undefined
-  const { logout } = useAuth() // Get the logout function from your context
-  const navigate = useNavigate() // Get the navigate function for routing
+  const { logout } = useAuth()
+  const navigate = useNavigate()
 
   const handleLogout = () => {
     logout()
@@ -126,11 +125,9 @@ export default function DashboardLayoutBasic(props: any) {
       window={demoWindow}
     >
       <DashboardLayout slots={{appTitle: CustomAppTitle, sidebarFooter: SidebarFooter}}>
-        {/* <PageContainer> */}
         {router.pathname === "/dashboard" && <DashboardPage />}
         {router.pathname === "/admin" && <AdminPanel />}{" "}
         {router.pathname === "/employee" && <EmployeeGrid />}{" "}
-        {/* </PageContainer> */}
       </DashboardLayout>
     </AppProvider>
   )
